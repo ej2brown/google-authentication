@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ej2brown/google-authentication#readme",
   "dependencies": {
     "@octokit/core": "^3.1.2",
-    "browserify": "^16.5.2"
+    "browserify": "^16.5.2",
+    "dotenv": "^8.2.0"
   }
 }
