@@ -1,0 +1,24 @@
+{
+  "name": "google-authentication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browserify": "browserify ./scripts/index.js > ./build/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ej2brown/google-authentication.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ej2brown/google-authentication/issues"
+  },
+  "homepage": "https://github.com/ej2brown/google-authentication#readme",
+  "dependencies": {
+    "@octokit/core": "^3.1.2",
+    "browserify": "^16.5.2"
+  }
+}
