@@ -1,24 +1,17 @@
-require("dotenv").config();
 
-// const start = require("./scripts/api.js");
-if (typeof process.env !== 'undefined') {
-  console.log('process.env', process.env);
-}
-if (typeof process.env.GOOGLE_CLIENT_ID !== 'undefined') {
-  console.log('process.env.GOOGLE_CLIENT_ID', process.env.GOOGLE_CLIENT_ID);
-}
-if (typeof GOOGLE_CLIENT_ID !== 'undefined') {
-  console.log('GOOGLE_CLIENT_ID', GOOGLE_CLIENT_ID);
-}
-if (typeof $GOOGLE_CLIENT_ID !== 'undefined') {
-  console.log('GOOGLE_CLIENT_ID', $GOOGLE_CLIENT_ID);
-}
-if (typeof env !== 'undefined') {
-  console.log('env', env);
-}
+const init = () => {
+  console.log("init");
+  gapi.load('auth2', function () {
+    auth2 = gapi.auth2.init({
+      client_id: `${GOOGLE_CLIENT_ID}`,
+      fetch_basic_profile: false,
+      scope: 'profile'
+    });
 
-if (typeof ACCESS_TOKEN !== 'undefined') {
-  console.log('ACCESS_TOKEN', ACCESS_TOKEN);
-}
-
-const API_KEY = process.env.GOOGLE_CLIENT_ID;
+    // Sign the user in, and then retrieve their ID.
+    auth2.signIn().then(function () {
+      console.log(auth2.currentUser.get().getId());
+    });
+  });
+  console.log("end");
+};
