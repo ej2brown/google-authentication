@@ -105,7 +105,11 @@ dist
 
 # Local Netlify folder
 .netlify
+netlify.toml
 
-attempts/
+build/
 
 package-lock.json
+
+build/bundle.js
+secret
