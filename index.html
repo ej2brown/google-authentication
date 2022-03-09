@@ -2,67 +2,43 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Google Sign-in - Demo</title>
+
+  <meta name="description" content="Google Sign-in OAuth API" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="theme-color" content="#000000" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta charset="utf-8" />
 
   <!-- External CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 
-  <!-- External JS -->
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles.css" type="text/css" />
+
+  <!-- External JS --> 
   <meta name="google-signin-client_id"
     content="431899335430-fllb4nqcmn78etdacdttgv4sbt8luhjt.apps.googleusercontent.com">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
   <!-- App JS -->
-  <!-- <script type="text/javascript" src="./build/bundle.js" defer></script> -->
+  <script type="text/javascript" src="./build/bundle.js" defer></script>
 
 </head>
 
 <body>
-  <!-- <script type="text/javascript" src="./build/bundle.js" defer></script> -->
   <section>
-    <h3>Google Sign-in OAuth API</h3>
+    <h3>Google Sign-in Authenication Demo</h3>
+    <!-- Add a Google Sign-In button -->
     <div id="g-signin2" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    <div id="signedIn"></div>
-    <!--  -->
-    <div id="signed-in-cell"></div>
-    <div id="curr-user-cell"></div>
-    <div id="user-id"></div>
-    <div id="user-scopes"></div>
-    <div id="auth-response"></div>
-    <!--  -->
+    <!-- Sign out a user -->
+    <a href="#" id="sign-out">Sign out</a>
+    <div id="user-info"></div>
   </section>
-  <script>
-    // async function onSignIn(googleUser) {
-    //   var profile = await googleUser.getBasicProfile();
-    //   var id_token = await googleUser.getAuthResponse().id_token;
-    //   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    //   console.log('Name: ' + profile.getName());
-    //   console.log('Image URL: ' + profile.getImageUrl());
-    //   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    //   console.log('id_token: ' + id_token);
-
-    //   const result = `
-    //     Name: ${profile.getName()}
-    //     Image URL: ${profile.getImageUrl()} 
-    //     Email: ${profile.getEmail()}
-    //   `;
-
-    //   document.getElementById("signedIn").append(result)
-    // };
-
-    // auth2 = gapi.auth2.init();
-    // auth2.attachClickHandler('signinButton', additionalParams, onSignIn, onSignInFailure);
-
-    // function onSignInFailure() {
-    //   console.log(error)
-    // }
-
-  </script>
-  <script type="text/javascript" src="./build/bundle.js" defer></script>
-
 </body>
 
 </html>

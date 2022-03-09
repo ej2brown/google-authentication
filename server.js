@@ -1,6 +1,6 @@
 const { OAuth2Client } = require('google-auth-library');
 
-const CLIENT_ID = "431899335430-fllb4nqcmn78etdacdttgv4sbt8luhjt.apps.googleusercontent.com";
+const CLIENT_ID = proess.env.CLIENT_ID || "";
 const client = new OAuth2Client(CLIENT_ID);
 const verify = async () => {
   const ticket = await client.verifyIdToken({
