@@ -1,17 +1,27 @@
 $(document).on(() => {
   console.log("ready!");
 
-  gapi.load('auth2', initSigninV2);
-
   const authInstance = gapi.auth2.getAuthInstance({
-    client_id: proess.env.CLIENT_ID || "",
-    scope: 'profile'
-  }); // The Sign-In object.
+    client_id: proess.env.GOOGLE_CLIENT_ID || ""
+  }).then(() => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', proess.env.SERVER_URL);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+      console.log('Signed in as: ' + xhr.responseText);
+    };
+    xhr.send('idtoken=' + id_token);
+  });
 
-  /**
-   * Initializes Signin v2 and sets up listeners.
-   */
-  const initSigninV2 = () => {
+
+  gapi.load('auth2', () => {
+
+    gapi.auth2
+      .init({ client_id: proess.env.GOOGLE_CLIENT_ID || "" })
+      .then(() => {
+        renderButton();
+      });
+
     // Listen for sign-in state changes.
     auth2.isSignedIn.listen(signinChanged);
 
@@ -25,7 +35,7 @@ $(document).on(() => {
 
     // Start with the current values.
     renderUserInfo(auth2.currentUser.get().getBasicProfile());
-  };
+  });
 
 
   /**
@@ -50,6 +60,19 @@ $(document).on(() => {
 
     renderUserInfo(auth2.currentUser.get().getBasicProfile());
   };
+
+  const renderButton = () => {
+    gapi.signin2.render('signin-btn',
+      {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 40,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': () => { },
+        'onfailure': () => { }
+      });
+  }
 
   const renderUserInfo = (profile) => {
     const infoContainer = $('.user-info').html('');
