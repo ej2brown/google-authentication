@@ -15,6 +15,7 @@ $(document).on(() => {
 
 
   gapi.load('auth2', () => {
+    console.log('Initializing...');
 
     gapi.auth2
       .init({ client_id: proess.env.GOOGLE_CLIENT_ID || "" })
