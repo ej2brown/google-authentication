@@ -66,13 +66,13 @@ $(document).on(() => {
     return infoContainer.append(profileInfo);
   }
 
-  // On compose button click, show the new tweet form
   $('.sign-out').on("click", () => {
     signOut();
   });
 
   const signOut = () => {
-    const auth2 = authInstance.getAuthInstance();
+    console.log('Signing out...');
+    const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
       console.log('User signed out.');
     });
