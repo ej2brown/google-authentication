@@ -1,20 +1,9 @@
 $(document).on(() => {
   console.log("ready!");
+  
+  gapi.load('auth2', initialize);
 
-  const authInstance = gapi.auth2.getAuthInstance({
-    client_id: proess.env.GOOGLE_CLIENT_ID || ""
-  }).then(() => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', proess.env.SERVER_URL);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function () {
-      console.log('Signed in as: ' + xhr.responseText);
-    };
-    xhr.send('idtoken=' + id_token);
-  });
-
-
-  gapi.load('auth2', () => {
+  const initialize = () => {
     console.log('Initializing...');
 
     gapi.auth2
@@ -36,8 +25,19 @@ $(document).on(() => {
 
     // Start with the current values.
     renderUserInfo(auth2.currentUser.get().getBasicProfile());
-  });
+  };
 
+  const authInstance = gapi.auth2.getAuthInstance({
+    client_id: proess.env.GOOGLE_CLIENT_ID || ""
+  }).then(() => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', proess.env.SERVER_URL);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+      console.log('Signed in as: ' + xhr.responseText);
+    };
+    xhr.send('idtoken=' + id_token);
+  });
 
   /**
    * Listener method for sign-out live value.
