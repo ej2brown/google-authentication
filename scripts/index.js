@@ -1,6 +1,6 @@
 $(document).on(() => {
   console.log("ready!");
-  
+
   gapi.load('auth2', initialize);
 
   const initialize = () => {
@@ -29,14 +29,6 @@ $(document).on(() => {
 
   const authInstance = gapi.auth2.getAuthInstance({
     client_id: proess.env.GOOGLE_CLIENT_ID || ""
-  }).then(() => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', proess.env.SERVER_URL);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function () {
-      console.log('Signed in as: ' + xhr.responseText);
-    };
-    xhr.send('idtoken=' + id_token);
   });
 
   /**

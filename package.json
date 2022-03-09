@@ -20,8 +20,10 @@
   "homepage": "https://github.com/ej2brown/google-authentication#readme",
   "dependencies": {
     "@octokit/core": "^3.1.2",
+    "body-parser": "^1.19.2",
     "browserify": "^16.5.2",
     "dotenv": "^8.2.0",
+    "express": "^4.17.3",
     "google-auth-library": "^7.14.0",
     "jquery": "^3.5.1"
   }
